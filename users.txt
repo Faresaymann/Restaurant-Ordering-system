@@ -1,0 +1,11 @@
+1,faresayman@gmail.com,fares
+634,New User,faresayman@gmail.com,faresayman@gmail.com,false,Phones:010102,Addresses:cairo giza;
+635,faresayman212@gmail.com,212
+105,New User,fares333@gmail.com,password,false,Phones:333,Addresses:cairo alex;
+132,New User,fares4@gmail,4,false,Phones:444,Addresses:cairo alex;
+1,John Doe,johndoe@example.com,password123,false,Phone:123-456-7890,Address:123 Main St, Springfield
+1,fares,fares@gmail,123,false,Phone:0101,Address:21 street, giza
+1,f,faf,fafsd,false,Phone:121,Address:21, 55
+1,Ayman,Ayman@gmail.com,Ayman123,false,Phone:0111231111,Address:haram street, giza
+1,ss,trying,try,false,Phone:010,Address:ss, tt
+1,rr,rr,rr,false,Phone:rr,Address:rr, rr
