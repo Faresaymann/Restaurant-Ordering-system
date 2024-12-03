@@ -24,20 +24,46 @@ public class User {
         this.password = password;
         this.isElite = false; // Default to non-elite
     }
+    public User() {
+    }
+    
+
 
     // Sign-up method to save user data to a file
-    public void signUp() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("users.txt", true))) {
-            String userData = userID + "," + name + "," + email + "," + password + "," + isElite +
-                    ",Phone:" + phoneNumber +
-                    ",Address:" + (deliveryAddress != null ? deliveryAddress.getAddressDetails() : "None");
-            writer.write(userData);
-            writer.newLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+   public void SignUp(String name, String email, String password, String address, String phoneNumber) {
+    try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"));
+         BufferedWriter writer = new BufferedWriter(new FileWriter("users.txt", true))) {
 
+        // Determine the next userID
+        int userID = 1; // Default userID for the first user
+        String lastLine = null;
+        String currentLine;
+
+        // Read the file to find the last userID
+        while ((currentLine = reader.readLine()) != null) {
+            lastLine = currentLine;
+        }
+
+        if (lastLine != null) {
+            String[] lastUserDetails = lastLine.split(",");
+            userID = Integer.parseInt(lastUserDetails[0]) + 1; // Increment the last userID
+        }
+
+        // Prepare user data
+        String userData = userID + "," + name + "," + email + "," + password +
+                          ",Phone:" + phoneNumber +
+                          ",Address:" + address;
+
+        // Write the new user data to the file
+        writer.write(userData);
+        writer.newLine();
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+    
     // Login method to check user credentials
     public static boolean login(String email, String password) {
         try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
@@ -54,39 +80,6 @@ public class User {
         return false; // Login failed
     }
 
-    
-    public static User loadUserByEmail(String email) {
-    try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
-        String line;
-        while ((line = reader.readLine()) != null) {
-            String[] userDetails = line.split(",");
-            if (userDetails[2].equals(email)) {
-                int userID = Integer.parseInt(userDetails[0]);
-                String name = userDetails[1];
-                String password = userDetails[3];
-                boolean isElite = Boolean.parseBoolean(userDetails[4]);
-                String phoneNumber = userDetails[5];
-                String[] addressParts = userDetails[6].split(";");
-                Address address = new Address(1, addressParts[0], addressParts[1]);
-
-                User user = new User(userID, name, email, password);
-                user.setPhoneNumber(phoneNumber);
-                user.setDeliveryAddress(address);
-                user.setElite(isElite);
-                return user;
-            }
-        }
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-    return null;
-}
-
-    
-    
-    
-    
-    
     // Setters and Getters for phone number and delivery address
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
@@ -94,9 +87,6 @@ public class User {
 
     public String getPhoneNumber() {
         return phoneNumber;
-    }
-    public String getPassword() {
-        return password;
     }
 
     public void setDeliveryAddress(Address deliveryAddress) {
