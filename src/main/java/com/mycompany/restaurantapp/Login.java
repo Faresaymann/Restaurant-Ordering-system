@@ -5,6 +5,7 @@ package com.mycompany.restaurantapp;
 import com.mycompany.restaurantapp.SignUp;
 import static com.mycompany.restaurantapp.User.login;
 import javax.swing.*;
+import java.awt.*;
 
 public class Login extends javax.swing.JFrame {
 
@@ -32,6 +33,7 @@ public class Login extends javax.swing.JFrame {
         SignUpBtn = new javax.swing.JButton();
         LoginBtn1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         Right = new javax.swing.JPanel();
         Cover = new javax.swing.JLabel();
 
@@ -40,7 +42,6 @@ public class Login extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setBounds(new java.awt.Rectangle(0, 0, 1101, 800));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(1113, 714));
         setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
@@ -50,15 +51,12 @@ public class Login extends javax.swing.JFrame {
         jPanel2.setLayout(null);
 
         Left.setBackground(new java.awt.Color(0, 102, 102));
-        Left.setForeground(new java.awt.Color(0, 0, 0));
         Left.setAutoscrolls(true);
         Left.setMaximumSize(new java.awt.Dimension(551, 711));
         Left.setMinimumSize(new java.awt.Dimension(550, 711));
         Left.setPreferredSize(new java.awt.Dimension(551, 711));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("F:\\university\\Java\\fornow\\icons\\Cover_Image.jpg")); // NOI18N
         jLabel2.setLabelFor(Right);
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel2.setMaximumSize(new java.awt.Dimension(680, 700));
@@ -75,13 +73,12 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Login To Your Account");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("F:\\university\\Java\\fornow\\icons\\logo.png")); // NOI18N
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon("F:\\university\\Java\\fornow\\icons\\user.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user.png"))); // NOI18N
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("F:\\university\\Java\\fornow\\icons\\key-chain.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/key-chain.png"))); // NOI18N
 
         EmailTF.setBackground(new java.awt.Color(51, 51, 51));
         EmailTF.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -130,8 +127,10 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("F:\\university\\Java\\fornow\\icons\\copyright.png")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/copyright.png"))); // NOI18N
         jLabel7.setText("All Copyright Reserved By Fares Ayman");
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.png"))); // NOI18N
 
         javax.swing.GroupLayout LeftLayout = new javax.swing.GroupLayout(Left);
         Left.setLayout(LeftLayout);
@@ -139,9 +138,6 @@ public class Login extends javax.swing.JFrame {
             LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LeftLayout.createSequentialGroup()
                 .addGroup(LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(LeftLayout.createSequentialGroup()
-                        .addGap(231, 231, 231)
-                        .addComponent(jLabel4))
                     .addGroup(LeftLayout.createSequentialGroup()
                         .addGap(205, 205, 205)
                         .addComponent(jLabel1))
@@ -164,7 +160,12 @@ public class Login extends javax.swing.JFrame {
                         .addGap(203, 203, 203)
                         .addGroup(LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(LoginBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                            .addComponent(SignUpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(SignUpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(LeftLayout.createSequentialGroup()
+                        .addGap(231, 231, 231)
+                        .addGroup(LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel4))))
                 .addGap(1810, 1810, 1810)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -177,6 +178,8 @@ public class Login extends javax.swing.JFrame {
             .addGroup(LeftLayout.createSequentialGroup()
                 .addGap(83, 83, 83)
                 .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
@@ -206,7 +209,7 @@ public class Login extends javax.swing.JFrame {
         Right.setMinimumSize(new java.awt.Dimension(551, 711));
         Right.setPreferredSize(new java.awt.Dimension(550, 700));
 
-        Cover.setIcon(new javax.swing.ImageIcon("F:\\university\\Java\\fornow\\icons\\Cover_Image.jpg")); // NOI18N
+        Cover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cover_Image.jpg"))); // NOI18N
         Cover.setLabelFor(Right);
         Cover.setMaximumSize(new java.awt.Dimension(550, 700));
         Cover.setMinimumSize(new java.awt.Dimension(550, 700));
@@ -281,11 +284,13 @@ public class Login extends javax.swing.JFrame {
 
 
             // Navigate to Menu frame
-//            MenuFrame menuFrame = new MenuFrame(); // Replace with your actual Menu frame class
-//            menuFrame.setVisible(true);
-//            this.dispose(); // Close the current frame
+            MenuItems MenuFrame= new MenuItems();
+            MenuFrame.setVisible(true);
+            MenuFrame.pack();
+            MenuFrame.setLocationRelativeTo(null);
+            this.dispose(); // Close the current frame
 
-          JOptionPane.showMessageDialog(this, "Login Successful!");
+          //JOptionPane.showMessageDialog(this, "Login Successful!");
 
         } else {
             // Show error message
@@ -334,6 +339,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

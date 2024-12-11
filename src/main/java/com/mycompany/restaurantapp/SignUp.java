@@ -7,6 +7,7 @@ import javax.swing.*;
 public class SignUp extends javax.swing.JFrame {
 
     String phoneNumber,address,password,email,fullName;
+    
     public SignUp() {
         initComponents();
     }
@@ -35,6 +36,7 @@ public class SignUp extends javax.swing.JFrame {
         SignUpAddress = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         BackBtn = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
         Right = new javax.swing.JPanel();
         Cover = new javax.swing.JLabel();
 
@@ -43,7 +45,6 @@ public class SignUp extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setBounds(new java.awt.Rectangle(0, 0, 1101, 800));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(1100, 710));
         setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
@@ -53,15 +54,12 @@ public class SignUp extends javax.swing.JFrame {
         jPanel2.setLayout(null);
 
         Left.setBackground(new java.awt.Color(0, 102, 102));
-        Left.setForeground(new java.awt.Color(0, 0, 0));
         Left.setAutoscrolls(true);
         Left.setMaximumSize(new java.awt.Dimension(551, 711));
         Left.setMinimumSize(new java.awt.Dimension(550, 711));
         Left.setPreferredSize(new java.awt.Dimension(551, 711));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("F:\\university\\Java\\fornow\\icons\\Cover_Image.jpg")); // NOI18N
         jLabel2.setLabelFor(Right);
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel2.setMaximumSize(new java.awt.Dimension(680, 700));
@@ -78,7 +76,6 @@ public class SignUp extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Create Your Account");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("F:\\university\\Java\\fornow\\icons\\logo.png")); // NOI18N
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         FullNameTF.setBackground(new java.awt.Color(51, 51, 51));
@@ -117,7 +114,7 @@ public class SignUp extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("F:\\university\\Java\\fornow\\icons\\copyright.png")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/copyright.png"))); // NOI18N
         jLabel7.setText("All Copyright Reserved By Fares Ayman");
 
         SignUpPhoneNumber.setBackground(new java.awt.Color(51, 51, 51));
@@ -182,6 +179,8 @@ public class SignUp extends javax.swing.JFrame {
             }
         });
 
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.png"))); // NOI18N
+
         javax.swing.GroupLayout LeftLayout = new javax.swing.GroupLayout(Left);
         Left.setLayout(LeftLayout);
         LeftLayout.setHorizontalGroup(
@@ -205,16 +204,18 @@ public class SignUp extends javax.swing.JFrame {
                             .addComponent(SignUpPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(SignUpAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(LeftLayout.createSequentialGroup()
+                        .addGap(251, 251, 251)
+                        .addComponent(jLabel11))
+                    .addGroup(LeftLayout.createSequentialGroup()
                         .addGap(235, 235, 235)
-                        .addComponent(jLabel4))
+                        .addGroup(LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4)))
                     .addGroup(LeftLayout.createSequentialGroup()
-                        .addGap(206, 206, 206)
-                        .addComponent(jLabel1))
-                    .addGroup(LeftLayout.createSequentialGroup()
-                        .addGap(171, 171, 171)
+                        .addGap(199, 199, 199)
                         .addComponent(jLabel3))
                     .addGroup(LeftLayout.createSequentialGroup()
-                        .addGap(218, 218, 218)
+                        .addGap(227, 227, 227)
                         .addGroup(LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(SignUpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -230,11 +231,13 @@ public class SignUp extends javax.swing.JFrame {
             .addGroup(LeftLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addGroup(LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FullNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -256,13 +259,13 @@ public class SignUp extends javax.swing.JFrame {
                 .addGroup(LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(SignUpPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(SignUpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SignUpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel7)
-                .addGap(78, 78, 78))
+                .addGap(57, 57, 57))
         );
 
         jPanel2.add(Left);
@@ -273,7 +276,7 @@ public class SignUp extends javax.swing.JFrame {
         Right.setMinimumSize(new java.awt.Dimension(551, 711));
         Right.setPreferredSize(new java.awt.Dimension(550, 700));
 
-        Cover.setIcon(new javax.swing.ImageIcon("F:\\university\\Java\\fornow\\icons\\Cover_Image.jpg")); // NOI18N
+        Cover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cover_Image.jpg"))); // NOI18N
         Cover.setLabelFor(Right);
         Cover.setMaximumSize(new java.awt.Dimension(550, 700));
         Cover.setMinimumSize(new java.awt.Dimension(550, 700));
@@ -327,7 +330,7 @@ public class SignUp extends javax.swing.JFrame {
             email = SignUPEmail.getText().trim();
             password = SignUpPassword.getText().trim();
             address = SignUpAddress.getText().trim();
-           phoneNumber = SignUpPhoneNumber.getText().trim();
+            phoneNumber = SignUpPhoneNumber.getText().trim();
 
            // Input Validation
            if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
@@ -424,6 +427,7 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JTextField SignUpPhoneNumber;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

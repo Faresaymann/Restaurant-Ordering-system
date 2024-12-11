@@ -12,12 +12,7 @@ public class RestaurantApp {
         LoginFrame.pack();
         LoginFrame.setLocationRelativeTo(null);
 
-
-
-
-
-
-
+        
 
     }
 

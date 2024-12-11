@@ -1,0 +1,14 @@
+1,Shawerma,Price:, 75, LE,A Middle Eastern wrap with tender marinated meat and tahini sauce.
+2,Hot Dog Sandwich,Price:, 60, LE,A tasty hot dog served in a bun with mustard and ketchup.
+3,Chicken Burger,Price:, 80, LE,A juicy grilled chicken burger with fresh lettuce and mayo.
+4,Pizza Pepperoni,Price:, 120, LE,A cheesy pizza with a variety of fresh toppings of your choice.
+5,Fried Chicken Meal,Price:, 110, LE,Crispy fried chicken served with coleslaw and fries.
+6,French Fries,Price:, 30, LE,Crispy golden fries, perfectly seasoned and delicious.
+7,Chicken Pops,Price:, 50, LE,Crispy juicy chicken bites, ideal for snacking.
+8,Beef Burger,Price:, 90, LE,A classic beef burger topped with cheddar cheese and pickles.
+9,Sea Food Pasta,Price:, 150, LE,Creamy pasta loaded with shrimp, calamari, and mussels.
+10,Combo Meal,Price:, 140, LE,A combo of fried chicken, fries, and a drink of your choice.
+11,Orange Juice,Price:, 30, LE,Freshly squeezed orange juice, rich in Vitamin C.
+12,Mango Juice,Price:, 35, LE,Sweet and refreshing mango juice made from fresh mangoes.
+13,Cola,Price:, 20, LE,A classic carbonated drink to quench your thirst.
+14,Lemon Juice,Price:, 25, LE,Zesty lemon juice served chilled for a refreshing taste.
