@@ -1,0 +1,11 @@
+UserID:1
+Name:fares
+Email:fares@gmail.com
+Password:123
+PhoneNumber:01023662234
+DeliveryAddress:giza
+EliteStatus:false
+Orders:
+Item{itemID=3, name=Chicken Burger, price=80.0, description=null}
+Item{itemID=3, name=Chicken Burger, price=80.0, description=null}
+Item{itemID=1, name=Shawerma, price=75.0, description=null}

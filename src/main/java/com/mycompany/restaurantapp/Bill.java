@@ -13,7 +13,7 @@ public class Bill {
     public Bill(int billID, Order order) {
         this.billID = billID;
         this.order = order;
-        this.totalAmount = order.calculateTotal();
+        this.totalAmount = (float) order.calculateTotal();
         this.discountedAmount = totalAmount; // Default to totalAmount, before discount
     }
 

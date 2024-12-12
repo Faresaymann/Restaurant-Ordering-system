@@ -235,16 +235,14 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1107, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -268,35 +266,28 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_SignUpBtnActionPerformed
 
     private void LoginBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtn1ActionPerformed
-        // TODO add your handling code here:
-        
-         email = EmailTF.getText().trim();
-         pass =PasswordTF.getText().trim();
+        // Get the email and password from text fields
+         String email = EmailTF.getText().trim();
+         String password = PasswordTF.getText().trim();
 
-        // Input Validation for Email Format
-        if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
-            JOptionPane.showMessageDialog(this, "Invalid email format. Please enter a valid email.");
-            return;
-        }
+         // Input Validation for Email
+         if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+             JOptionPane.showMessageDialog(this, "Invalid email format. Please enter a valid email.");
+             return;
+         }
 
-        // Check Credentials
-        if (login(email, pass)) {
-
-
-            // Navigate to Menu frame
-            MenuItems MenuFrame= new MenuItems();
-            MenuFrame.setVisible(true);
-            MenuFrame.pack();
-            MenuFrame.setLocationRelativeTo(null);
-            this.dispose(); // Close the current frame
-
-          //JOptionPane.showMessageDialog(this, "Login Successful!");
-
-        } else {
-            // Show error message
-            JOptionPane.showMessageDialog(this, "Invalid email or password. Please try again.");
-        }
-
+         // Attempt login using User.login method
+         User user = User.login(email, password);
+         if (user != null) {
+             JOptionPane.showMessageDialog(this, "Login Successful!");
+             RestaurantApp.currentUser = user; // Set the logged-in user
+             // Navigate to the next screen, e.g., Menu Screen
+             MenuItems menuFrame = new MenuItems();
+             menuFrame.setVisible(true);
+             this.dispose(); // Close the login screen
+         } else {
+             JOptionPane.showMessageDialog(this, "Invalid email or password. Please try again.");
+         }
 
     }//GEN-LAST:event_LoginBtn1ActionPerformed
 

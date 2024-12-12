@@ -304,14 +304,14 @@ public class SignUp extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -326,11 +326,12 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_FullNameTFActionPerformed
 
     private void SignUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpBtnActionPerformed
-            fullName =  FullNameTF.getText().trim();
-            email = SignUPEmail.getText().trim();
-            password = SignUpPassword.getText().trim();
-            address = SignUpAddress.getText().trim();
-            phoneNumber = SignUpPhoneNumber.getText().trim();
+            // Get user details from the text fields
+           String fullName = FullNameTF.getText().trim();
+           String email = SignUPEmail.getText().trim();
+           String password = SignUpPassword.getText().trim();
+           String address = SignUpAddress.getText().trim();
+           String phoneNumber = SignUpPhoneNumber.getText().trim();
 
            // Input Validation
            if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
@@ -349,7 +350,7 @@ public class SignUp extends javax.swing.JFrame {
            }
 
            if (!phoneNumber.matches("^\\d{11}$")) {
-               JOptionPane.showMessageDialog(this, "Phone number must contain only numbers.");
+               JOptionPane.showMessageDialog(this, "Phone number must contain 11 digits.");
                return;
            }
 
@@ -358,11 +359,14 @@ public class SignUp extends javax.swing.JFrame {
                return;
            }
 
-           // Save user data to file
-           User u= new User();
-           u.SignUp(fullName, email, password, address, phoneNumber);
-
-           JOptionPane.showMessageDialog(this, "Sign Up Successful!");
+           // Call signUp method
+           User newUser = User.signUp(fullName, email, password, address, phoneNumber);
+           if (newUser != null) {
+               JOptionPane.showMessageDialog(this, "Sign-Up Successful!");
+               // Optionally navigate to the login page or next screen
+           } else {
+               JOptionPane.showMessageDialog(this, "Sign-Up Failed. Email might already exist.");
+           }
            // Optionally, clear fields or navigate to another screen
     }//GEN-LAST:event_SignUpBtnActionPerformed
 

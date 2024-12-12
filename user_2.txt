@@ -1,0 +1,14 @@
+UserID:2
+Name:faresS
+Email:faresS@gmail.com
+Password:123
+PhoneNumber:01023662234
+DeliveryAddress:giza
+EliteStatus:false
+Orders:
+Item{itemID=1, name=Shawerma, price=75.0, description=A Middle Eastern wrap with tender marinated meat and tahini sauce.}
+Item{itemID=2, name=Hot Dog Sandwich, price=60.0, description=A tasty hot dog served in a bun with mustard and ketchup.}
+Item{itemID=1, name=Shawerma, price=75.0, description=A Middle Eastern wrap with tender marinated meat and tahini sauce.}
+Item{itemID=4, name=Pizza Pepperoni, price=120.0, description=A cheesy pizza with a variety of fresh toppings of your choice.}
+Item{itemID=4, name=Pizza Pepperoni, price=120.0, description=A cheesy pizza with a variety of fresh toppings of your choice.}
+Item{itemID=4, name=Pizza Pepperoni, price=120.0, description=A cheesy pizza with a variety of fresh toppings of your choice.}

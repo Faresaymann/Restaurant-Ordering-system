@@ -1,12 +1,18 @@
 package com.mycompany.restaurantapp;
 
+import com.mycompany.restaurantapp.Item;
+import com.mycompany.restaurantapp.Order;
+import java.awt.TextArea;
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
 
 public class MenuItems extends javax.swing.JFrame {
 
+    String newAddress1;
+    Order order=new Order();
     List<Item> orderItems = new ArrayList<>();
+    ArrayList<Integer> quantity = new ArrayList<>();
 
     public MenuItems() {
         initComponents();
@@ -111,6 +117,8 @@ public class MenuItems extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -1216,6 +1224,28 @@ public class MenuItems extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user1.png"))); // NOI18N
 
+        jButton3.setBackground(new java.awt.Color(153, 51, 0));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Reset");
+        jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setBackground(new java.awt.Color(153, 51, 0));
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("gg");
+        jButton4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -1264,7 +1294,12 @@ public class MenuItems extends javax.swing.JFrame {
                                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(27, 27, 27)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(69, 69, 69)
+                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(536, 536, 536)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1305,12 +1340,16 @@ public class MenuItems extends javax.swing.JFrame {
                         .addComponent(jPanel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1397,20 +1436,21 @@ public class MenuItems extends javax.swing.JFrame {
     }//GEN-LAST:event_ItemsAncestorAdded
 
     private void btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionPerformed
-        // TODO add your handling code here:
-        if (evt.getSource() == btn1) {
+       if (evt.getSource() == btn1) {
             try (BufferedReader reader = new BufferedReader(new FileReader("menu.txt"))) {
                 String line;
                 boolean itemFound = false;
 
                 while ((line = reader.readLine()) != null) {
                     String[] itemDetails = line.split(",");
-                    if (itemDetails.length <6) {
+                    if (itemDetails.length < 6) {
                         continue; // Skip invalid lines
                     }
+
                     if (Integer.parseInt(itemDetails[0]) == 1) {
                         itemFound = true;
 
+                        // Create a new item from the menu
                         Item item = new Item(
                                 Integer.parseInt(itemDetails[0]),
                                 itemDetails[1],
@@ -1418,13 +1458,38 @@ public class MenuItems extends javax.swing.JFrame {
                                 itemDetails[5]
                         );
 
-                        int a = (int) sp1.getValue();
-                        for (int i = 0; i < a; i++) {
-                            orderItems.add(item);
-                            orderTextArea.append("" + item.getName() + "\n");
+                        // Get the quantity from the spinner
+                        int quantityToAdd = (int) sp1.getValue();
 
+                        // Check if the item is already in the order
+                        boolean itemExists = false;
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            if (orderItems.get(i).getItemID() == item.getItemID()) {
+                                // Item exists, update its quantity
+                                quantity.set(i, (int) quantity.get(i) + quantityToAdd);
+                                itemExists = true;
+                                break;
+                            }
                         }
-                        break; // Exit the loop after finding the item
+
+                        if (!itemExists) {
+                            // Item does not exist, add it to the lists
+                            orderItems.add(item);
+                            order.addItemToOrder(item);
+                            quantity.add(quantityToAdd);
+                        }
+
+                        // Update the order summary display
+                        StringBuilder displayText = new StringBuilder();
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            displayText.append(orderItems.get(i).getName())
+                                    .append(" x")
+                                    .append(quantity.get(i))
+                                    .append("\n");
+                        }
+                        orderTextArea.setText(displayText.toString());
+
+                        break; // Exit the loop after processing the item
                     }
                 }
 
@@ -1448,9 +1513,11 @@ public class MenuItems extends javax.swing.JFrame {
                     if (itemDetails.length < 6) {
                         continue; // Skip invalid lines
                     }
+
                     if (Integer.parseInt(itemDetails[0]) == 2) {
                         itemFound = true;
 
+                        // Create a new item from the menu
                         Item item = new Item(
                                 Integer.parseInt(itemDetails[0]),
                                 itemDetails[1],
@@ -1458,13 +1525,37 @@ public class MenuItems extends javax.swing.JFrame {
                                 itemDetails[5]
                         );
 
-                        int a = (int) sp2.getValue();
-                        for (int i = 0; i < a; i++) {
-                            orderItems.add(item);
-                            orderTextArea.append("" + item.getName() + "\n");
+                        // Get the quantity from the spinner
+                        int quantityToAdd = (int) sp2.getValue();
 
+                        // Check if the item is already in the order
+                        boolean itemExists = false;
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            if (orderItems.get(i).getItemID() == item.getItemID()) {
+                                // Item exists, update its quantity
+                                quantity.set(i, (int) quantity.get(i) + quantityToAdd);
+                                itemExists = true;
+                                break;
+                            }
                         }
-                        break; // Exit the loop after finding the item
+
+                        if (!itemExists) {
+                            // Item does not exist, add it to the lists
+                            order.addItemToOrder(item);
+                            quantity.add(quantityToAdd);
+                        }
+
+                        // Update the order summary display
+                        StringBuilder displayText = new StringBuilder();
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            displayText.append(orderItems.get(i).getName())
+                                    .append(" x")
+                                    .append(quantity.get(i))
+                                    .append("\n");
+                        }
+                        orderTextArea.setText(displayText.toString());
+
+                        break; // Exit the loop after processing the item
                     }
                 }
 
@@ -1488,9 +1579,11 @@ public class MenuItems extends javax.swing.JFrame {
                     if (itemDetails.length < 6) {
                         continue; // Skip invalid lines
                     }
+
                     if (Integer.parseInt(itemDetails[0]) == 3) {
                         itemFound = true;
 
+                        // Create a new item from the menu
                         Item item = new Item(
                                 Integer.parseInt(itemDetails[0]),
                                 itemDetails[1],
@@ -1498,13 +1591,37 @@ public class MenuItems extends javax.swing.JFrame {
                                 itemDetails[5]
                         );
 
-                        int a = (int) sp3.getValue();
-                        for (int i = 0; i < a; i++) {
-                            orderItems.add(item);
-                            orderTextArea.append("" + item.getName() + "\n");
+                        // Get the quantity from the spinner
+                        int quantityToAdd = (int) sp3.getValue();
 
+                        // Check if the item is already in the order
+                        boolean itemExists = false;
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            if (orderItems.get(i).getItemID() == item.getItemID()) {
+                                // Item exists, update its quantity
+                                quantity.set(i, (int) quantity.get(i) + quantityToAdd);
+                                itemExists = true;
+                                break;
+                            }
                         }
-                        break; // Exit the loop after finding the item
+
+                        if (!itemExists) {
+                            // Item does not exist, add it to the lists
+                            order.addItemToOrder(item);
+                            quantity.add(quantityToAdd);
+                        }
+
+                        // Update the order summary display
+                        StringBuilder displayText = new StringBuilder();
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            displayText.append(orderItems.get(i).getName())
+                                    .append(" x")
+                                    .append(quantity.get(i))
+                                    .append("\n");
+                        }
+                        orderTextArea.setText(displayText.toString());
+
+                        break; // Exit the loop after processing the item
                     }
                 }
 
@@ -1528,9 +1645,11 @@ public class MenuItems extends javax.swing.JFrame {
                     if (itemDetails.length < 6) {
                         continue; // Skip invalid lines
                     }
+
                     if (Integer.parseInt(itemDetails[0]) == 4) {
                         itemFound = true;
 
+                        // Create a new item from the menu
                         Item item = new Item(
                                 Integer.parseInt(itemDetails[0]),
                                 itemDetails[1],
@@ -1538,13 +1657,37 @@ public class MenuItems extends javax.swing.JFrame {
                                 itemDetails[5]
                         );
 
-                        int a = (int) sp4.getValue();
-                        for (int i = 0; i < a; i++) {
-                            orderItems.add(item);
-                            orderTextArea.append("" + item.getName() + "\n");
+                        // Get the quantity from the spinner
+                        int quantityToAdd = (int) sp4.getValue();
 
+                        // Check if the item is already in the order
+                        boolean itemExists = false;
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            if (orderItems.get(i).getItemID() == item.getItemID()) {
+                                // Item exists, update its quantity
+                                quantity.set(i, (int) quantity.get(i) + quantityToAdd);
+                                itemExists = true;
+                                break;
+                            }
                         }
-                        break; // Exit the loop after finding the item
+
+                        if (!itemExists) {
+                            // Item does not exist, add it to the lists
+                            order.addItemToOrder(item);
+                            quantity.add(quantityToAdd);
+                        }
+
+                        // Update the order summary display
+                        StringBuilder displayText = new StringBuilder();
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            displayText.append(orderItems.get(i).getName())
+                                    .append(" x")
+                                    .append(quantity.get(i))
+                                    .append("\n");
+                        }
+                        orderTextArea.setText(displayText.toString());
+
+                        break; // Exit the loop after processing the item
                     }
                 }
 
@@ -1568,9 +1711,11 @@ public class MenuItems extends javax.swing.JFrame {
                     if (itemDetails.length < 6) {
                         continue; // Skip invalid lines
                     }
+
                     if (Integer.parseInt(itemDetails[0]) == 5) {
                         itemFound = true;
 
+                        // Create a new item from the menu
                         Item item = new Item(
                                 Integer.parseInt(itemDetails[0]),
                                 itemDetails[1],
@@ -1578,13 +1723,37 @@ public class MenuItems extends javax.swing.JFrame {
                                 itemDetails[5]
                         );
 
-                        int a = (int) sp5.getValue();
-                        for (int i = 0; i < a; i++) {
-                            orderItems.add(item);
-                            orderTextArea.append("" + item.getName() + "\n");
+                        // Get the quantity from the spinner
+                        int quantityToAdd = (int) sp5.getValue();
 
+                        // Check if the item is already in the order
+                        boolean itemExists = false;
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            if (orderItems.get(i).getItemID() == item.getItemID()) {
+                                // Item exists, update its quantity
+                                quantity.set(i, (int) quantity.get(i) + quantityToAdd);
+                                itemExists = true;
+                                break;
+                            }
                         }
-                        break; // Exit the loop after finding the item
+
+                        if (!itemExists) {
+                            // Item does not exist, add it to the lists
+                            order.addItemToOrder(item);
+                            quantity.add(quantityToAdd);
+                        }
+
+                        // Update the order summary display
+                        StringBuilder displayText = new StringBuilder();
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            displayText.append(orderItems.get(i).getName())
+                                    .append(" x")
+                                    .append(quantity.get(i))
+                                    .append("\n");
+                        }
+                        orderTextArea.setText(displayText.toString());
+
+                        break; // Exit the loop after processing the item
                     }
                 }
 
@@ -1608,9 +1777,11 @@ public class MenuItems extends javax.swing.JFrame {
                     if (itemDetails.length < 6) {
                         continue; // Skip invalid lines
                     }
+
                     if (Integer.parseInt(itemDetails[0]) == 6) {
                         itemFound = true;
 
+                        // Create a new item from the menu
                         Item item = new Item(
                                 Integer.parseInt(itemDetails[0]),
                                 itemDetails[1],
@@ -1618,13 +1789,37 @@ public class MenuItems extends javax.swing.JFrame {
                                 itemDetails[5]
                         );
 
-                        int a = (int) sp6.getValue();
-                        for (int i = 0; i < a; i++) {
-                            orderItems.add(item);
-                            orderTextArea.append("" + item.getName() + "\n");
+                        // Get the quantity from the spinner
+                        int quantityToAdd = (int) sp6.getValue();
 
+                        // Check if the item is already in the order
+                        boolean itemExists = false;
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            if (orderItems.get(i).getItemID() == item.getItemID()) {
+                                // Item exists, update its quantity
+                                quantity.set(i, (int) quantity.get(i) + quantityToAdd);
+                                itemExists = true;
+                                break;
+                            }
                         }
-                        break; // Exit the loop after finding the item
+
+                        if (!itemExists) {
+                            // Item does not exist, add it to the lists
+                            order.addItemToOrder(item);
+                            quantity.add(quantityToAdd);
+                        }
+
+                        // Update the order summary display
+                        StringBuilder displayText = new StringBuilder();
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            displayText.append(orderItems.get(i).getName())
+                                    .append(" x")
+                                    .append(quantity.get(i))
+                                    .append("\n");
+                        }
+                        orderTextArea.setText(displayText.toString());
+
+                        break; // Exit the loop after processing the item
                     }
                 }
 
@@ -1648,9 +1843,11 @@ public class MenuItems extends javax.swing.JFrame {
                     if (itemDetails.length < 6) {
                         continue; // Skip invalid lines
                     }
+
                     if (Integer.parseInt(itemDetails[0]) == 7) {
                         itemFound = true;
 
+                        // Create a new item from the menu
                         Item item = new Item(
                                 Integer.parseInt(itemDetails[0]),
                                 itemDetails[1],
@@ -1658,13 +1855,37 @@ public class MenuItems extends javax.swing.JFrame {
                                 itemDetails[5]
                         );
 
-                        int a = (int) sp7.getValue();
-                        for (int i = 0; i < a; i++) {
-                            orderItems.add(item);
-                            orderTextArea.append("" + item.getName() + "\n");
+                        // Get the quantity from the spinner
+                        int quantityToAdd = (int) sp7.getValue();
 
+                        // Check if the item is already in the order
+                        boolean itemExists = false;
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            if (orderItems.get(i).getItemID() == item.getItemID()) {
+                                // Item exists, update its quantity
+                                quantity.set(i, (int) quantity.get(i) + quantityToAdd);
+                                itemExists = true;
+                                break;
+                            }
                         }
-                        break; // Exit the loop after finding the item
+
+                        if (!itemExists) {
+                            // Item does not exist, add it to the lists
+                            order.addItemToOrder(item);
+                            quantity.add(quantityToAdd);
+                        }
+
+                        // Update the order summary display
+                        StringBuilder displayText = new StringBuilder();
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            displayText.append(orderItems.get(i).getName())
+                                    .append(" x")
+                                    .append(quantity.get(i))
+                                    .append("\n");
+                        }
+                        orderTextArea.setText(displayText.toString());
+
+                        break; // Exit the loop after processing the item
                     }
                 }
 
@@ -1688,9 +1909,11 @@ public class MenuItems extends javax.swing.JFrame {
                     if (itemDetails.length < 6) {
                         continue; // Skip invalid lines
                     }
+
                     if (Integer.parseInt(itemDetails[0]) == 8) {
                         itemFound = true;
 
+                        // Create a new item from the menu
                         Item item = new Item(
                                 Integer.parseInt(itemDetails[0]),
                                 itemDetails[1],
@@ -1698,13 +1921,37 @@ public class MenuItems extends javax.swing.JFrame {
                                 itemDetails[5]
                         );
 
-                        int a = (int) sp8.getValue();
-                        for (int i = 0; i < a; i++) {
-                            orderItems.add(item);
-                            orderTextArea.append("" + item.getName() + "\n");
+                        // Get the quantity from the spinner
+                        int quantityToAdd = (int) sp8.getValue();
 
+                        // Check if the item is already in the order
+                        boolean itemExists = false;
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            if (orderItems.get(i).getItemID() == item.getItemID()) {
+                                // Item exists, update its quantity
+                                quantity.set(i, (int) quantity.get(i) + quantityToAdd);
+                                itemExists = true;
+                                break;
+                            }
                         }
-                        break; // Exit the loop after finding the item
+
+                        if (!itemExists) {
+                            // Item does not exist, add it to the lists
+                            order.addItemToOrder(item);
+                            quantity.add(quantityToAdd);
+                        }
+
+                        // Update the order summary display
+                        StringBuilder displayText = new StringBuilder();
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            displayText.append(orderItems.get(i).getName())
+                                    .append(" x")
+                                    .append(quantity.get(i))
+                                    .append("\n");
+                        }
+                        orderTextArea.setText(displayText.toString());
+
+                        break; // Exit the loop after processing the item
                     }
                 }
 
@@ -1728,9 +1975,11 @@ public class MenuItems extends javax.swing.JFrame {
                     if (itemDetails.length < 6) {
                         continue; // Skip invalid lines
                     }
+
                     if (Integer.parseInt(itemDetails[0]) == 9) {
                         itemFound = true;
 
+                        // Create a new item from the menu
                         Item item = new Item(
                                 Integer.parseInt(itemDetails[0]),
                                 itemDetails[1],
@@ -1738,13 +1987,37 @@ public class MenuItems extends javax.swing.JFrame {
                                 itemDetails[5]
                         );
 
-                        int a = (int) sp9.getValue();
-                        for (int i = 0; i < a; i++) {
-                            orderItems.add(item);
-                            orderTextArea.append("" + item.getName() + "\n");
+                        // Get the quantity from the spinner
+                        int quantityToAdd = (int) sp9.getValue();
 
+                        // Check if the item is already in the order
+                        boolean itemExists = false;
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            if (orderItems.get(i).getItemID() == item.getItemID()) {
+                                // Item exists, update its quantity
+                                quantity.set(i, (int) quantity.get(i) + quantityToAdd);
+                                itemExists = true;
+                                break;
+                            }
                         }
-                        break; // Exit the loop after finding the item
+
+                        if (!itemExists) {
+                            // Item does not exist, add it to the lists
+                            order.addItemToOrder(item);
+                            quantity.add(quantityToAdd);
+                        }
+
+                        // Update the order summary display
+                        StringBuilder displayText = new StringBuilder();
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            displayText.append(orderItems.get(i).getName())
+                                    .append(" x")
+                                    .append(quantity.get(i))
+                                    .append("\n");
+                        }
+                        orderTextArea.setText(displayText.toString());
+
+                        break; // Exit the loop after processing the item
                     }
                 }
 
@@ -1768,9 +2041,11 @@ public class MenuItems extends javax.swing.JFrame {
                     if (itemDetails.length < 6) {
                         continue; // Skip invalid lines
                     }
+
                     if (Integer.parseInt(itemDetails[0]) == 10) {
                         itemFound = true;
 
+                        // Create a new item from the menu
                         Item item = new Item(
                                 Integer.parseInt(itemDetails[0]),
                                 itemDetails[1],
@@ -1778,13 +2053,37 @@ public class MenuItems extends javax.swing.JFrame {
                                 itemDetails[5]
                         );
 
-                        int a = (int) sp10.getValue();
-                        for (int i = 0; i < a; i++) {
-                            orderItems.add(item);
-                            orderTextArea.append("" + item.getName() + "\n");
+                        // Get the quantity from the spinner
+                        int quantityToAdd = (int) sp10.getValue();
 
+                        // Check if the item is already in the order
+                        boolean itemExists = false;
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            if (orderItems.get(i).getItemID() == item.getItemID()) {
+                                // Item exists, update its quantity
+                                quantity.set(i, (int) quantity.get(i) + quantityToAdd);
+                                itemExists = true;
+                                break;
+                            }
                         }
-                        break; // Exit the loop after finding the item
+
+                        if (!itemExists) {
+                            // Item does not exist, add it to the lists
+                            order.addItemToOrder(item);
+                            quantity.add(quantityToAdd);
+                        }
+
+                        // Update the order summary display
+                        StringBuilder displayText = new StringBuilder();
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            displayText.append(orderItems.get(i).getName())
+                                    .append(" x")
+                                    .append(quantity.get(i))
+                                    .append("\n");
+                        }
+                        orderTextArea.setText(displayText.toString());
+
+                        break; // Exit the loop after processing the item
                     }
                 }
 
@@ -1808,9 +2107,11 @@ public class MenuItems extends javax.swing.JFrame {
                     if (itemDetails.length < 6) {
                         continue; // Skip invalid lines
                     }
+
                     if (Integer.parseInt(itemDetails[0]) == 11) {
                         itemFound = true;
 
+                        // Create a new item from the menu
                         Item item = new Item(
                                 Integer.parseInt(itemDetails[0]),
                                 itemDetails[1],
@@ -1818,13 +2119,37 @@ public class MenuItems extends javax.swing.JFrame {
                                 itemDetails[5]
                         );
 
-                        int a = (int) sp11.getValue();
-                        for (int i = 0; i < a; i++) {
-                            orderItems.add(item);
-                            orderTextArea.append("" + item.getName() + "\n");
+                        // Get the quantity from the spinner
+                        int quantityToAdd = (int) sp11.getValue();
 
+                        // Check if the item is already in the order
+                        boolean itemExists = false;
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            if (orderItems.get(i).getItemID() == item.getItemID()) {
+                                // Item exists, update its quantity
+                                quantity.set(i, (int) quantity.get(i) + quantityToAdd);
+                                itemExists = true;
+                                break;
+                            }
                         }
-                        break; // Exit the loop after finding the item
+
+                        if (!itemExists) {
+                            // Item does not exist, add it to the lists
+                            order.addItemToOrder(item);
+                            quantity.add(quantityToAdd);
+                        }
+
+                        // Update the order summary display
+                        StringBuilder displayText = new StringBuilder();
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            displayText.append(orderItems.get(i).getName())
+                                    .append(" x")
+                                    .append(quantity.get(i))
+                                    .append("\n");
+                        }
+                        orderTextArea.setText(displayText.toString());
+
+                        break; // Exit the loop after processing the item
                     }
                 }
 
@@ -1848,9 +2173,11 @@ public class MenuItems extends javax.swing.JFrame {
                     if (itemDetails.length < 6) {
                         continue; // Skip invalid lines
                     }
+
                     if (Integer.parseInt(itemDetails[0]) == 12) {
                         itemFound = true;
 
+                        // Create a new item from the menu
                         Item item = new Item(
                                 Integer.parseInt(itemDetails[0]),
                                 itemDetails[1],
@@ -1858,13 +2185,37 @@ public class MenuItems extends javax.swing.JFrame {
                                 itemDetails[5]
                         );
 
-                        int a = (int) sp12.getValue();
-                        for (int i = 0; i < a; i++) {
-                            orderItems.add(item);
-                            orderTextArea.append("" + item.getName() + "\n");
+                        // Get the quantity from the spinner
+                        int quantityToAdd = (int) sp12.getValue();
 
+                        // Check if the item is already in the order
+                        boolean itemExists = false;
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            if (orderItems.get(i).getItemID() == item.getItemID()) {
+                                // Item exists, update its quantity
+                                quantity.set(i, (int) quantity.get(i) + quantityToAdd);
+                                itemExists = true;
+                                break;
+                            }
                         }
-                        break; // Exit the loop after finding the item
+
+                        if (!itemExists) {
+                            // Item does not exist, add it to the lists
+                            order.addItemToOrder(item);
+                            quantity.add(quantityToAdd);
+                        }
+
+                        // Update the order summary display
+                        StringBuilder displayText = new StringBuilder();
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            displayText.append(orderItems.get(i).getName())
+                                    .append(" x")
+                                    .append(quantity.get(i))
+                                    .append("\n");
+                        }
+                        orderTextArea.setText(displayText.toString());
+
+                        break; // Exit the loop after processing the item
                     }
                 }
 
@@ -1888,9 +2239,11 @@ public class MenuItems extends javax.swing.JFrame {
                     if (itemDetails.length < 6) {
                         continue; // Skip invalid lines
                     }
+
                     if (Integer.parseInt(itemDetails[0]) == 13) {
                         itemFound = true;
 
+                        // Create a new item from the menu
                         Item item = new Item(
                                 Integer.parseInt(itemDetails[0]),
                                 itemDetails[1],
@@ -1898,13 +2251,37 @@ public class MenuItems extends javax.swing.JFrame {
                                 itemDetails[5]
                         );
 
-                        int a = (int) sp13.getValue();
-                        for (int i = 0; i < a; i++) {
-                            orderItems.add(item);
-                            orderTextArea.append("" + item.getName() + "\n");
+                        // Get the quantity from the spinner
+                        int quantityToAdd = (int) sp13.getValue();
 
+                        // Check if the item is already in the order
+                        boolean itemExists = false;
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            if (orderItems.get(i).getItemID() == item.getItemID()) {
+                                // Item exists, update its quantity
+                                quantity.set(i, (int) quantity.get(i) + quantityToAdd);
+                                itemExists = true;
+                                break;
+                            }
                         }
-                        break; // Exit the loop after finding the item
+
+                        if (!itemExists) {
+                            // Item does not exist, add it to the lists
+                            order.addItemToOrder(item);
+                            quantity.add(quantityToAdd);
+                        }
+
+                        // Update the order summary display
+                        StringBuilder displayText = new StringBuilder();
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            displayText.append(orderItems.get(i).getName())
+                                    .append(" x")
+                                    .append(quantity.get(i))
+                                    .append("\n");
+                        }
+                        orderTextArea.setText(displayText.toString());
+
+                        break; // Exit the loop after processing the item
                     }
                 }
 
@@ -1928,9 +2305,11 @@ public class MenuItems extends javax.swing.JFrame {
                     if (itemDetails.length < 6) {
                         continue; // Skip invalid lines
                     }
+
                     if (Integer.parseInt(itemDetails[0]) == 14) {
                         itemFound = true;
 
+                        // Create a new item from the menu
                         Item item = new Item(
                                 Integer.parseInt(itemDetails[0]),
                                 itemDetails[1],
@@ -1938,14 +2317,37 @@ public class MenuItems extends javax.swing.JFrame {
                                 itemDetails[5]
                         );
 
-                        int a = (int) sp14.getValue();
-                        for (int i = 0; i < a; i++) {
-                            orderItems.add(item);
-                            orderTextArea.append("" + item.getName() + "\n");
-                            System.out.println("Adding to text area: " + item.getName());
+                        // Get the quantity from the spinner
+                        int quantityToAdd = (int) sp14.getValue();
 
+                        // Check if the item is already in the order
+                        boolean itemExists = false;
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            if (orderItems.get(i).getItemID() == item.getItemID()) {
+                                // Item exists, update its quantity
+                                quantity.set(i, (int) quantity.get(i) + quantityToAdd);
+                                itemExists = true;
+                                break;
+                            }
                         }
-                        break; // Exit the loop after finding the item
+
+                        if (!itemExists) {
+                            // Item does not exist, add it to the lists
+                            order.addItemToOrder(item);
+                            quantity.add(quantityToAdd);
+                        }
+
+                        // Update the order summary display
+                        StringBuilder displayText = new StringBuilder();
+                        for (int i = 0; i < orderItems.size(); i++) {
+                            displayText.append(orderItems.get(i).getName())
+                                    .append(" x")
+                                    .append(quantity.get(i))
+                                    .append("\n");
+                        }
+                        orderTextArea.setText(displayText.toString());
+
+                        break; // Exit the loop after processing the item
                     }
                 }
 
@@ -1961,12 +2363,100 @@ public class MenuItems extends javax.swing.JFrame {
             }
         }
 
-
+        
+            //add the order for the current user
+           RestaurantApp.currentUser.placeOrder(order);
     }//GEN-LAST:event_btnActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+         if (evt.getSource() == jButton2) {   
+
+                      if (orderItems.isEmpty()) {
+                          orderTextArea.append ( "Your cart is empty. Please add items to place an order.");
+                          return;
+                      }
+                     // Display a confirmation dialog for the address
+                        int choice = JOptionPane.showConfirmDialog(
+                                null,
+                                "Do you want to deliver to a new address?",
+                                "Delivery Address",
+                                JOptionPane.YES_NO_OPTION
+                        );
+
+                        if (choice == JOptionPane.YES_OPTION) {
+                            // Prompt user to enter a new address
+                            newAddress1 = JOptionPane.showInputDialog("Enter New Address");
+                            if (!newAddress1.isEmpty()) { 
+                                Order o1=new Order();
+                                o1.updateDeliveryAddress(newAddress1);
+
+                               orderTextArea.append("New address saved successfully!\n\n");
+                            } else {
+                                orderTextArea.append("Invalid address! Using existing address.\n\n");
+                            }
+                        }
+
+
+                      StringBuilder orderSummary = new StringBuilder();
+                      orderSummary.append("Your Order:\n");
+                      orderSummary.append("---------------------\n");
+
+                      List<Item> processedItems = new ArrayList<>();
+                      double totalPrice = 0;
+
+                      for (Item item : orderItems) {
+                          if (!processedItems.contains(item)) {
+                              int quantity = 0;
+                              double itemTotalPrice = 0;
+
+                              // Count occurrences of the item in orderItems
+                              for (Item i : orderItems) {
+                                  if (i.equals(item)) {
+                                      quantity++;
+                                      itemTotalPrice += i.getPrice();
+                                  }
+                              }
+
+                              processedItems.add(item);
+                              totalPrice += itemTotalPrice;
+
+                              // Append item details to the summary
+                              orderSummary.append(item.getName())
+                                          .append(" (x").append(quantity).append(")")
+                                          .append(": $").append(itemTotalPrice).append("\n");
+                          }
+                      }
+
+                      orderSummary.append("---------------------\n");
+                      orderSummary.append("Total Price: $").append(totalPrice).append("\n");
+
+                      // Show the order summary in a dialog box
+                      orderTextArea.append (orderSummary.toString());
+                  
+            }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        orderTextArea.setText(" ");
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+           //User u= new User();
+           //u.setDeliveryAddress(newAddress1);
+           //newAddress1=u.getDeliveryAddress();
+            
+            // Append each order item to the text area
+            for (Item item : RestaurantApp.currentUser.getOrderItems()) {
+                orderTextArea.append(item + "\n");
+            }
+            System.out.println("User file path: " + new File("user_1.txt").getAbsolutePath());
+            System.out.println("Original file path: " + new File("users.txt").getAbsolutePath());
+
+         //JOptionPane.showMessageDialog(this, "the address is "+  u1.getOrderItems());
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2015,6 +2505,8 @@ public class MenuItems extends javax.swing.JFrame {
     private javax.swing.JButton btn8;
     private javax.swing.JButton btn9;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
