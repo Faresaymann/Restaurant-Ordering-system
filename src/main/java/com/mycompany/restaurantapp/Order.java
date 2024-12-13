@@ -1,7 +1,6 @@
 package com.mycompany.restaurantapp;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Order {
     private int orderID; // Unique identifier for the order
@@ -41,15 +40,7 @@ public class Order {
            this.orderItems.add(item); 
        }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(orderID).append(";").append(deliveryAddress);
-        for (Item item : orderItems) {
-            sb.append(";").append(item.toString());
-        }
-        return sb.toString();
-    }
+   
 
     // Add an item to the order
     public void addItemToOrder(Item item) {
@@ -72,9 +63,13 @@ public class Order {
     public String getDeliveryAddress() { return deliveryAddress; }
     public List<Item> getOrderItems() { return orderItems; }
     
-//    @Override
-//    public String toString() {
-//        return "Order{" + "orderID=" + orderID + ", orderItems=" + orderItems + ", deliveryAddress=" + deliveryAddress + ", totalPrice=" + totalPrice + '}';
-//    }
-    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(orderID).append(";").append(deliveryAddress);
+        for (Item item : orderItems) {
+            sb.append(";").append(item.toString());
+        }
+        return sb.toString();
+    }
 }

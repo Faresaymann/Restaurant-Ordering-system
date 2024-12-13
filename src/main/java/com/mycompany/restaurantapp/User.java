@@ -1,8 +1,7 @@
 package com.mycompany.restaurantapp;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Represents a user of the restaurant application.
@@ -21,7 +20,7 @@ public class User {
     // Constructor
       public User() {
     }
-    public User(int userID, String name, String email, String password,String address,String phonenumber) {
+    public User(int userID, String name, String email, String password,String address,String phonenumber,boolean elite) {
         this.userID = userID;
         this.name = name;
         this.email = email;
@@ -32,7 +31,7 @@ public class User {
     }
   
     // Sign-Up Method
-       public static User signUp(String name, String email, String password, String address, String phoneNumber) {
+    public static User signUp(String name, String email, String password, String address, String phoneNumber) {
            try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"));
                 BufferedWriter writer = new BufferedWriter(new FileWriter("users.txt", true))) {
 
@@ -53,12 +52,13 @@ public class User {
                    userID = Integer.parseInt(userDetails[0]) + 1;
                }
 
-               // Create new user
-               User newUser = new User(userID, name, email, password, address, phoneNumber);
+                // Create new user
+                boolean isElite = false; // Default elite status is false
+                User newUser = new User(userID, name, email, password, address, phoneNumber, isElite);
 
-               // Save to `users.txt`
-               writer.write(userID + "," + name + "," + email + "," + password + ",Phone:" + phoneNumber + ",Address:" + address);
-               writer.newLine();
+                // Save to `users.txt`
+                writer.write(userID + "," + name + "," + email + "," + password + ",Phone:" + phoneNumber + ",Address:" + address + ",Elite:" + isElite);
+                writer.newLine();
 
                // Create individual user file
                newUser.saveToFile();
@@ -70,8 +70,8 @@ public class User {
            return null;
        }
 
-       // Login Method
-       public static User login(String email, String password) {
+    // Login Method
+    public static User login(String email, String password) {
            try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
                String line;
                while ((line = reader.readLine()) != null) {
@@ -88,8 +88,8 @@ public class User {
            return null; // Login failed
        }
 
-        // Save User Data to Individual File
-        public void saveToFile() {
+    // Save User Data to Individual File
+    public void saveToFile() {
            try (BufferedWriter writer = new BufferedWriter(new FileWriter("user_" + userID + ".txt"))) {
                writer.write("UserID:" + userID + "\n");
                writer.write("Name:" + name + "\n");
@@ -108,8 +108,9 @@ public class User {
                e.printStackTrace();
            }
        }
-
-        public static User loadFromFile(int userID) {
+    
+    //load the user data from the file
+    public static User loadFromFile(int userID) {
             try (BufferedReader reader = new BufferedReader(new FileReader("user_" + userID + ".txt"))) {
                 User user = new User();
                 user.userID = userID;
@@ -140,9 +141,8 @@ public class User {
             return null;
     }
 
-
-
-       public void placeOrder(Order order) {
+    //add order to the user
+    public void placeOrder(Order order) {
         if (orderItems == null) {
             orderItems = new ArrayList<>();
         }
@@ -150,105 +150,17 @@ public class User {
         orderItems.addAll(order.getOrderItems()); // Add all items from the order
         saveToFile(); // Save user data with updated orders
     }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-//    // Sign-up method to save user data to a file
-//   public void SignUp(String name, String email, String password, String address, String phoneNumber) {
-//    try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"));
-//         BufferedWriter writer = new BufferedWriter(new FileWriter("users.txt", true))) {
-//        
-//        String currentLine;
-//
-//        
-////         // Check if the email already exists
-////        while ((currentLine = reader.readLine()) != null) {
-////            String[] userDetails = currentLine.split(",");
-////            if (userDetails[2].trim().equalsIgnoreCase(email)) {
-////                System.out.println("Email already exists. Please use a different email.");
-////                return;
-////            }
-////        }
-//
-//        // Determine the next userID
-//        int userID = 1; // Default userID for the first user
-//        String lastLine = null;
-//        
-//
-//        // Read the file to find the last userID
-//        while ((currentLine = reader.readLine()) != null) {
-//            lastLine = currentLine;
-//        }
-//
-//        if (lastLine != null) {
-//            String[] lastUserDetails = lastLine.split(",");
-//            userID = Integer.parseInt(lastUserDetails[0]) + 1; // Increment the last userID
-//        }
-//
-//        // Prepare user data
-//        String userData = userID + "," + name + "," + email + "," + password +
-//                          ",Phone:" + phoneNumber +
-//                          ",Address:" + address;
-//
-//        // Write the new user data to the file
-//        writer.write(userData);
-//        writer.newLine();
-//        
-//        //create a new user 
-//        new User( userID,  name,  email,  password, address,phoneNumber);
-//
-//    } catch (IOException e) {
-//        e.printStackTrace();
-//    }
-//}
-//
-//    
-//    // Login method to check user credentials
-//    public static boolean login(String email, String password) {
-//        try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                String[] userDetails = line.split(",");
-//                if (userDetails[2].equals(email) && userDetails[3].equals(password)) {
-//                    return true; // Login successful
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return false; // Login failed
-//    }
-//
-   
-    
+ 
     //order of the user
     public void setOrderItems(List<Item> orderItems) {
         this.orderItems = orderItems;
     }
     
+    //setters and getters
     public List<Item> getOrderItems() {
         return orderItems;
     }
-    
-//    public void Addorder(Order order){
-//        order.getOrderItems();
-//    }
-    
+       
     public int getUserID() {
         return userID;
     }

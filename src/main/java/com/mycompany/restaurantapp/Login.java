@@ -1,9 +1,5 @@
 package com.mycompany.restaurantapp;
 
-
-
-import com.mycompany.restaurantapp.SignUp;
-import static com.mycompany.restaurantapp.User.login;
 import javax.swing.*;
 import java.awt.*;
 
@@ -281,9 +277,11 @@ public class Login extends javax.swing.JFrame {
          if (user != null) {
              JOptionPane.showMessageDialog(this, "Login Successful!");
              RestaurantApp.currentUser = user; // Set the logged-in user
+
              // Navigate to the next screen, e.g., Menu Screen
              MenuItems menuFrame = new MenuItems();
              menuFrame.setVisible(true);
+             menuFrame.setLocationRelativeTo(null);
              this.dispose(); // Close the login screen
          } else {
              JOptionPane.showMessageDialog(this, "Invalid email or password. Please try again.");

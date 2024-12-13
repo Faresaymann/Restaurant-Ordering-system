@@ -1,8 +1,7 @@
 package com.mycompany.restaurantapp;
 
-/**
- * Provides features for Elite members, including discounts.
- */
+
+
 public class EliteService {
     private static final float ELITE_FEE = 100; // Annual fee for Elite membership
     private static final float DISCOUNT_PERCENTAGE = 0.10f; // Discount percentage for Elite members

@@ -1,3 +1,4 @@
-1,fares,fares@gmail.com,123,Phone:01023662234,Address:giza
-2,faresS,faresS@gmail.com,123,Phone:01023662234,Address:giza
-3,faresW,faresW@gmail.com,123,Phone:01023662234,Address:giza
+1,fares,fares@gmail.com,123,Phone:01023662234,Elite:true
+2,faresS,faresS@gmail.com,123,Phone:01023662234,Elite:true
+3,faresW,faresW@gmail.com,123,Phone:01023662234,Elite:true
+4,fares,faresO@gmail.com,123,Phone:01934772234,Address:giza,Elite:false

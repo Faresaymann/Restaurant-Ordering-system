@@ -1,8 +1,7 @@
 package com.mycompany.restaurantapp;
 
-import com.mycompany.restaurantapp.Item;
-import com.mycompany.restaurantapp.Order;
 import java.awt.TextArea;
+import java.awt.event.*;
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
@@ -116,9 +115,9 @@ public class MenuItems extends javax.swing.JFrame {
         orderTextArea = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        ProfileLabel = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Signout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -1222,7 +1221,16 @@ public class MenuItems extends javax.swing.JFrame {
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user1.png"))); // NOI18N
+        ProfileLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user1.png"))); // NOI18N
+        ProfileLabel.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                ProfileLabelAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(153, 51, 0));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -1235,14 +1243,14 @@ public class MenuItems extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(153, 51, 0));
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("gg");
-        jButton4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Signout.setBackground(new java.awt.Color(153, 51, 0));
+        Signout.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Signout.setForeground(new java.awt.Color(255, 255, 255));
+        Signout.setText("Sign Out");
+        Signout.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Signout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                SignoutActionPerformed(evt);
             }
         });
 
@@ -1254,7 +1262,7 @@ public class MenuItems extends javax.swing.JFrame {
                 .addGap(527, 527, 527)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(ProfileLabel)
                 .addGap(42, 42, 42)
                 .addComponent(jLabel10)
                 .addGap(53, 53, 53))
@@ -1265,8 +1273,10 @@ public class MenuItems extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Signout, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -1296,10 +1306,7 @@ public class MenuItems extends javax.swing.JFrame {
                                         .addGap(27, 27, 27)
                                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(69, 69, 69)
-                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(536, 536, 536)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1310,11 +1317,13 @@ public class MenuItems extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(Signout, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)))
+                        .addComponent(ProfileLabel)))
                 .addGap(7, 7, 7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -1346,10 +1355,8 @@ public class MenuItems extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26))
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(27, 27, 27))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1541,6 +1548,7 @@ public class MenuItems extends javax.swing.JFrame {
 
                         if (!itemExists) {
                             // Item does not exist, add it to the lists
+                            orderItems.add(item);
                             order.addItemToOrder(item);
                             quantity.add(quantityToAdd);
                         }
@@ -1607,6 +1615,7 @@ public class MenuItems extends javax.swing.JFrame {
 
                         if (!itemExists) {
                             // Item does not exist, add it to the lists
+                            orderItems.add(item);
                             order.addItemToOrder(item);
                             quantity.add(quantityToAdd);
                         }
@@ -1673,6 +1682,7 @@ public class MenuItems extends javax.swing.JFrame {
 
                         if (!itemExists) {
                             // Item does not exist, add it to the lists
+                            orderItems.add(item);
                             order.addItemToOrder(item);
                             quantity.add(quantityToAdd);
                         }
@@ -1739,6 +1749,7 @@ public class MenuItems extends javax.swing.JFrame {
 
                         if (!itemExists) {
                             // Item does not exist, add it to the lists
+                            orderItems.add(item);
                             order.addItemToOrder(item);
                             quantity.add(quantityToAdd);
                         }
@@ -1805,6 +1816,7 @@ public class MenuItems extends javax.swing.JFrame {
 
                         if (!itemExists) {
                             // Item does not exist, add it to the lists
+                            orderItems.add(item);
                             order.addItemToOrder(item);
                             quantity.add(quantityToAdd);
                         }
@@ -1871,6 +1883,7 @@ public class MenuItems extends javax.swing.JFrame {
 
                         if (!itemExists) {
                             // Item does not exist, add it to the lists
+                            orderItems.add(item);
                             order.addItemToOrder(item);
                             quantity.add(quantityToAdd);
                         }
@@ -1937,6 +1950,7 @@ public class MenuItems extends javax.swing.JFrame {
 
                         if (!itemExists) {
                             // Item does not exist, add it to the lists
+                            orderItems.add(item);
                             order.addItemToOrder(item);
                             quantity.add(quantityToAdd);
                         }
@@ -2003,6 +2017,7 @@ public class MenuItems extends javax.swing.JFrame {
 
                         if (!itemExists) {
                             // Item does not exist, add it to the lists
+                            orderItems.add(item);
                             order.addItemToOrder(item);
                             quantity.add(quantityToAdd);
                         }
@@ -2069,6 +2084,7 @@ public class MenuItems extends javax.swing.JFrame {
 
                         if (!itemExists) {
                             // Item does not exist, add it to the lists
+                            orderItems.add(item);
                             order.addItemToOrder(item);
                             quantity.add(quantityToAdd);
                         }
@@ -2135,6 +2151,7 @@ public class MenuItems extends javax.swing.JFrame {
 
                         if (!itemExists) {
                             // Item does not exist, add it to the lists
+                            orderItems.add(item);
                             order.addItemToOrder(item);
                             quantity.add(quantityToAdd);
                         }
@@ -2201,6 +2218,7 @@ public class MenuItems extends javax.swing.JFrame {
 
                         if (!itemExists) {
                             // Item does not exist, add it to the lists
+                            orderItems.add(item);
                             order.addItemToOrder(item);
                             quantity.add(quantityToAdd);
                         }
@@ -2267,6 +2285,7 @@ public class MenuItems extends javax.swing.JFrame {
 
                         if (!itemExists) {
                             // Item does not exist, add it to the lists
+                            orderItems.add(item);
                             order.addItemToOrder(item);
                             quantity.add(quantityToAdd);
                         }
@@ -2333,6 +2352,7 @@ public class MenuItems extends javax.swing.JFrame {
 
                         if (!itemExists) {
                             // Item does not exist, add it to the lists
+                            orderItems.add(item);
                             order.addItemToOrder(item);
                             quantity.add(quantityToAdd);
                         }
@@ -2370,71 +2390,110 @@ public class MenuItems extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         if (evt.getSource() == jButton2) {   
+        if (evt.getSource() == jButton2) {
 
-                      if (orderItems.isEmpty()) {
-                          orderTextArea.append ( "Your cart is empty. Please add items to place an order.");
-                          return;
-                      }
-                     // Display a confirmation dialog for the address
-                        int choice = JOptionPane.showConfirmDialog(
-                                null,
-                                "Do you want to deliver to a new address?",
-                                "Delivery Address",
-                                JOptionPane.YES_NO_OPTION
-                        );
+            if (orderItems.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Your cart is empty. Please add items to place an order.");
+                return;
+            }
+            // Display a confirmation dialog for the address
+            int choice = JOptionPane.showConfirmDialog(
+                    null,
+                    "Do you want to deliver to a new address?",
+                    "Delivery Address",
+                    JOptionPane.YES_NO_OPTION
+            );
 
-                        if (choice == JOptionPane.YES_OPTION) {
-                            // Prompt user to enter a new address
-                            newAddress1 = JOptionPane.showInputDialog("Enter New Address");
-                            if (!newAddress1.isEmpty()) { 
-                                Order o1=new Order();
-                                o1.updateDeliveryAddress(newAddress1);
+            if (choice == JOptionPane.YES_OPTION) {
+                // Prompt user to enter a new address
+                do {
+                    newAddress1 = JOptionPane.showInputDialog("Enter New Address");
 
-                               orderTextArea.append("New address saved successfully!\n\n");
-                            } else {
-                                orderTextArea.append("Invalid address! Using existing address.\n\n");
+                    if (!newAddress1.isEmpty()) {
+                        Order o1 = new Order();
+                        o1.updateDeliveryAddress(newAddress1);
+
+                        JOptionPane.showMessageDialog(this, "New address saved successfully!\n\n");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Invalid address! Using existing address.\n\n");
+                    }
+                } while (newAddress1.isEmpty());
+
+                StringBuilder orderSummary = new StringBuilder();
+                orderSummary.append("Your Order:\n");
+                orderSummary.append("---------------------\n");
+
+                List<Item> processedItems = new ArrayList<>();
+                double totalPrice = 0;
+
+                for (Item item : orderItems) {
+                    if (!processedItems.contains(item)) {
+                        int q = 0;
+                        double itemTotalPrice = 0;
+
+                        // Count occurrences of the item in orderItems
+                        for (int m = 0; m < orderItems.size(); m++) {
+                            if (orderItems.get(m).equals(item)) {
+                                q += quantity.get(m); // Sum the quantities for the item
+                                itemTotalPrice += orderItems.get(m).getPrice() * quantity.get(m); // Sum the price
                             }
                         }
 
+                        processedItems.add(item);
+                        totalPrice += itemTotalPrice;
 
-                      StringBuilder orderSummary = new StringBuilder();
-                      orderSummary.append("Your Order:\n");
-                      orderSummary.append("---------------------\n");
+                        // Append item details to the summary
+                        orderSummary.append(item.getName())
+                                .append(" (x").append(q).append(")")
+                                .append(": $").append(itemTotalPrice).append("\n");
+                    }
+                }
 
-                      List<Item> processedItems = new ArrayList<>();
-                      double totalPrice = 0;
+                orderSummary.append("---------------------\n");
+                orderSummary.append("Total Price: $").append(totalPrice).append("\n");
 
-                      for (Item item : orderItems) {
-                          if (!processedItems.contains(item)) {
-                              int quantity = 0;
-                              double itemTotalPrice = 0;
+                // Show the order summary in a dialog box
+                JOptionPane.showMessageDialog(this, orderSummary.toString());
 
-                              // Count occurrences of the item in orderItems
-                              for (Item i : orderItems) {
-                                  if (i.equals(item)) {
-                                      quantity++;
-                                      itemTotalPrice += i.getPrice();
-                                  }
-                              }
+            } else {
+                StringBuilder orderSummary = new StringBuilder();
+                orderSummary.append("Your Order:\n");
+                orderSummary.append("---------------------\n");
 
-                              processedItems.add(item);
-                              totalPrice += itemTotalPrice;
+                List<Item> processedItems = new ArrayList<>();
+                double totalPrice = 0;
 
-                              // Append item details to the summary
-                              orderSummary.append(item.getName())
-                                          .append(" (x").append(quantity).append(")")
-                                          .append(": $").append(itemTotalPrice).append("\n");
-                          }
-                      }
+                for (Item item : orderItems) {
+                    if (!processedItems.contains(item)) {
+                        int q = 0;
+                        double itemTotalPrice = 0;
 
-                      orderSummary.append("---------------------\n");
-                      orderSummary.append("Total Price: $").append(totalPrice).append("\n");
+                        // Count occurrences of the item in orderItems
+                        for (int m = 0; m < orderItems.size(); m++) {
+                            if (orderItems.get(m).equals(item)) {
+                                q += quantity.get(m); // Sum the quantities for the item
+                                itemTotalPrice += orderItems.get(m).getPrice() * quantity.get(m); // Sum the price
+                            }
+                        }
 
-                      // Show the order summary in a dialog box
-                      orderTextArea.append (orderSummary.toString());
-                  
+                        processedItems.add(item);
+                        totalPrice += itemTotalPrice;
+
+                        // Append item details to the summary
+                        orderSummary.append(item.getName())
+                                .append(" (x").append(q).append(")")
+                                .append(": $").append(itemTotalPrice).append("\n");
+                    }
+                }
+
+                orderSummary.append("---------------------\n");
+                orderSummary.append("Total Price: $").append(totalPrice).append("\n");
+                order.calculateTotal();
+                // Show the order summary in a dialog box
+                JOptionPane.showMessageDialog(this, orderSummary.toString());
+
             }
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -2442,25 +2501,32 @@ public class MenuItems extends javax.swing.JFrame {
         orderTextArea.setText(" ");
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void ProfileLabelAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_ProfileLabelAncestorAdded
         // TODO add your handling code here:
-           //User u= new User();
-           //u.setDeliveryAddress(newAddress1);
-           //newAddress1=u.getDeliveryAddress();
-            
-            // Append each order item to the text area
-            for (Item item : RestaurantApp.currentUser.getOrderItems()) {
-                orderTextArea.append(item + "\n");
-            }
-            System.out.println("User file path: " + new File("user_1.txt").getAbsolutePath());
-            System.out.println("Original file path: " + new File("users.txt").getAbsolutePath());
+             ProfileLabel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    // Open the Profile frame when the label is clicked
+                    Profile profileFrame = new Profile(); 
+                    profileFrame.setVisible(true); 
+                    profileFrame.pack(); 
+                    profileFrame.setLocationRelativeTo(null);
+                    SwingUtilities.getWindowAncestor(ProfileLabel).dispose();
+                }
+        });
+    }//GEN-LAST:event_ProfileLabelAncestorAdded
 
-         //JOptionPane.showMessageDialog(this, "the address is "+  u1.getOrderItems());
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void SignoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignoutActionPerformed
+        // TODO add your handling code here:
+            Login LoginFrame= new Login();
+            LoginFrame.setVisible(true);
+            LoginFrame.pack();
+            LoginFrame.setLocationRelativeTo(null);
+            this.dispose();
+    }//GEN-LAST:event_SignoutActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+   
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BeafBurgerLabel;
     private javax.swing.JLabel BeafBurgerPriceLabel;
@@ -2486,10 +2552,12 @@ public class MenuItems extends javax.swing.JFrame {
     private javax.swing.JLabel OrangeJuicePriceLabel;
     private javax.swing.JLabel PizzaLabel;
     private javax.swing.JLabel PizzaPriceLabel;
+    private javax.swing.JLabel ProfileLabel;
     private javax.swing.JLabel SeaFoodPastaLabel;
     private javax.swing.JLabel SeaFoodPastaPriceLabel;
     private javax.swing.JLabel ShawermaLabel;
     private javax.swing.JLabel ShawermaPriceLabel;
+    private javax.swing.JButton Signout;
     private javax.swing.JButton btn1;
     private javax.swing.JButton btn10;
     private javax.swing.JButton btn11;
@@ -2506,8 +2574,6 @@ public class MenuItems extends javax.swing.JFrame {
     private javax.swing.JButton btn9;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel18;
