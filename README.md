@@ -55,8 +55,8 @@ menu.txt - Stores the list of menu items:
 makefile
 
 ItemID,ItemName,Price  
-Example: 1,Burger,5.99  
-         2,Pizza,8.49  
+Example: 1,Burger,$5.99
+         2,Pizza,$8.49
 ## Example Output
 
 When the application runs, users will see the following:
