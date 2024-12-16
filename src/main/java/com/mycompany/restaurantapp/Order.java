@@ -61,7 +61,7 @@ public class Order {
     // Getters
     public int getOrderID() { return orderID; }
     public String getDeliveryAddress() { return deliveryAddress; }
-    public List<Item> getOrderItems() { return orderItems; }
+    public List<Item> getOrderItems() { return this.orderItems; }
     
     @Override
     public String toString() {

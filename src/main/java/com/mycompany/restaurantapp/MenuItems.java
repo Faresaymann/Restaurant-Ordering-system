@@ -1,5 +1,6 @@
 package com.mycompany.restaurantapp;
 
+
 import java.awt.TextArea;
 import java.awt.event.*;
 import java.io.*;
@@ -253,14 +254,14 @@ public class MenuItems extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(ShawermaPriceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(ShawermaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48))))
+                        .addGap(48, 48, 48))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(ShawermaPriceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1443,7 +1444,7 @@ public class MenuItems extends javax.swing.JFrame {
     }//GEN-LAST:event_ItemsAncestorAdded
 
     private void btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionPerformed
-       if (evt.getSource() == btn1) {
+         if (evt.getSource() == btn1) {
             try (BufferedReader reader = new BufferedReader(new FileReader("menu.txt"))) {
                 String line;
                 boolean itemFound = false;
@@ -2382,19 +2383,61 @@ public class MenuItems extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-
-        
             //add the order for the current user
            RestaurantApp.currentUser.placeOrder(order);
     }//GEN-LAST:event_btnActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        if (evt.getSource() == jButton2) {
+         if (evt.getSource() == jButton2) {
 
             if (orderItems.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Your cart is empty. Please add items to place an order.");
                 return;
+            }
+            
+            String[] paymentOptions = {"Cash", "Vodafone Cash"};
+            String paymentMethod = (String) JOptionPane.showInputDialog(
+                    null,
+                    "Choose your payment method:",
+                    "Payment Method",
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    paymentOptions,
+                    paymentOptions[0]
+            );
+            if (paymentMethod == null) {
+                // Exit the current operation and return to the frame
+                JOptionPane.showMessageDialog(this, "Payment method selection cancelled.");
+                return;
+            }
+
+            //payment using vodafone Cash method
+            if (paymentMethod != null) {
+               if (paymentMethod.equals("Vodafone Cash")) {
+                    String newPhoneNumber = null;
+
+                    while (true) {
+                        newPhoneNumber = JOptionPane.showInputDialog("Enter your Vodafone Cash number:");
+                        // Check if the input was cancelled or left empty
+                        if (newPhoneNumber == null || newPhoneNumber.isEmpty()) {
+                            JOptionPane.showMessageDialog(this, "No number entered. Cancelling Vodafone Cash payment.");
+                            return;
+                        }
+                        // Check if the phone number is 11 digits
+                        if (!newPhoneNumber.matches("^\\d{11}$")) {
+                            JOptionPane.showMessageDialog(this, "Phone number must contain exactly 11 digits.");
+                            continue; // Reopen the input dialog
+                        }
+                        // Check if the phone number starts with 010
+                        if (!newPhoneNumber.matches("^(010).*")) {
+                            JOptionPane.showMessageDialog(this, "Phone number must start with 010.");
+                            continue; // Reopen the input dialog
+                        }
+                        // Valid number entered
+                        JOptionPane.showMessageDialog(this, "Phone number accepted: " + newPhoneNumber);
+                        break; // Exit the loop
+                    }
+                }
             }
             // Display a confirmation dialog for the address
             int choice = JOptionPane.showConfirmDialog(
@@ -2410,8 +2453,7 @@ public class MenuItems extends javax.swing.JFrame {
                     newAddress1 = JOptionPane.showInputDialog("Enter New Address");
 
                     if (!newAddress1.isEmpty()) {
-                        Order o1 = new Order();
-                        o1.updateDeliveryAddress(newAddress1);
+                        RestaurantApp.currentUser.setDeliveryAddress(newAddress1);
 
                         JOptionPane.showMessageDialog(this, "New address saved successfully!\n\n");
                     } else {
@@ -2422,7 +2464,7 @@ public class MenuItems extends javax.swing.JFrame {
                 StringBuilder orderSummary = new StringBuilder();
                 orderSummary.append("Your Order:\n");
                 orderSummary.append("---------------------\n");
-
+                
                 List<Item> processedItems = new ArrayList<>();
                 double totalPrice = 0;
 
@@ -2438,10 +2480,8 @@ public class MenuItems extends javax.swing.JFrame {
                                 itemTotalPrice += orderItems.get(m).getPrice() * quantity.get(m); // Sum the price
                             }
                         }
-
                         processedItems.add(item);
                         totalPrice += itemTotalPrice;
-
                         // Append item details to the summary
                         orderSummary.append(item.getName())
                                 .append(" (x").append(q).append(")")
@@ -2450,10 +2490,21 @@ public class MenuItems extends javax.swing.JFrame {
                 }
 
                 orderSummary.append("---------------------\n");
-                orderSummary.append("Total Price: $").append(totalPrice).append("\n");
-
+                if (RestaurantApp.currentUser.isElite()) {
+                    orderSummary.append("Total Price: $").append(totalPrice).append("\n");
+                    orderSummary.append("Discount Price: $").append(totalPrice * 0.1).append("\n");
+                    orderSummary.append("Total Price after discount: $").append(totalPrice - totalPrice * 0.1).append("\n");
+                } else {
+                    orderSummary.append("Total Price: $").append(totalPrice).append("\n");
+                }
+                order.calculateTotal();
+                
                 // Show the order summary in a dialog box
+                orderSummary.append("---------------------\n");
+                orderSummary.append("To Your Address: ").append(RestaurantApp.currentUser.getDeliveryAddress()).append("\n");
                 JOptionPane.showMessageDialog(this, orderSummary.toString());
+                orderTextArea.setText("");
+                orderItems.clear();
 
             } else {
                 StringBuilder orderSummary = new StringBuilder();
@@ -2487,13 +2538,23 @@ public class MenuItems extends javax.swing.JFrame {
                 }
 
                 orderSummary.append("---------------------\n");
-                orderSummary.append("Total Price: $").append(totalPrice).append("\n");
-                order.calculateTotal();
-                // Show the order summary in a dialog box
-                JOptionPane.showMessageDialog(this, orderSummary.toString());
+                if (RestaurantApp.currentUser.isElite()) {
+                    orderSummary.append("Total Price: $").append(totalPrice).append("\n");
+                    orderSummary.append("Discount Price: $").append(totalPrice * 0.1).append("\n");
+                    orderSummary.append("Total Price after discount: $").append(totalPrice - totalPrice * 0.1).append("\n");
 
+                } else {
+                    orderSummary.append("Total Price: $").append(totalPrice).append("\n");
+                }
+                    orderSummary.append("---------------------\n");
+                    orderSummary.append("To Your Address: ").append(RestaurantApp.currentUser.getDeliveryAddress()).append("\n");
+                
+                // Show the order summary in a dialog box
+                JOptionPane.showMessageDialog(this, orderSummary.toString()); 
+                orderTextArea.setText("");
+                orderItems.clear();
             }
-        }
+        }                  
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

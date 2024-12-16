@@ -32,43 +32,49 @@ public class User {
   
     // Sign-Up Method
     public static User signUp(String name, String email, String password, String address, String phoneNumber) {
-           try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"));
-                BufferedWriter writer = new BufferedWriter(new FileWriter("users.txt", true))) {
+      try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"));
+           BufferedWriter writer = new BufferedWriter(new FileWriter("users.txt", true))) {
 
-               String line;
-//               // Check if email already exists
-//               while ((line = reader.readLine()) != null) {
-//                   String[] userDetails = line.split(",");
-//                   if (userDetails[2].trim().equalsIgnoreCase(email)) {
-//                       System.out.println("Email already exists. Please use a different email.");
-//                       return null;
-//                   }
-//               }
+          String line;
+          int userID = 1; // Default userID
+          boolean emailExists = false;
 
-               // Determine next userID
-               int userID = 1; // Default userID
-               while ((line = reader.readLine()) != null) {
-                   String[] userDetails = line.split(",");
-                   userID = Integer.parseInt(userDetails[0]) + 1;
-               }
+          // Process the file in a single pass
+          while ((line = reader.readLine()) != null) {
+              String[] userDetails = line.split(",");
 
-                // Create new user
-                boolean isElite = false; // Default elite status is false
-                User newUser = new User(userID, name, email, password, address, phoneNumber, isElite);
+              // Check if the email already exists
+              if (userDetails[2].trim().equalsIgnoreCase(email)) {
+                  emailExists = true;
+                  break;
+              }
 
-                // Save to `users.txt`
-                writer.write(userID + "," + name + "," + email + "," + password + ",Phone:" + phoneNumber + ",Address:" + address + ",Elite:" + isElite);
-                writer.newLine();
+              // Determine the next userID
+              userID = Math.max(userID, Integer.parseInt(userDetails[0]) + 1);
+          }
 
-               // Create individual user file
-               newUser.saveToFile();
+          if (emailExists) {
+              System.out.println("Email already exists. Please use a different email.");
+              return null;
+          }
 
-            return newUser;
-           } catch (IOException e) {
-               e.printStackTrace();
-           }
-           return null;
-       }
+          // Create new user
+          boolean isElite = false; // Default elite status is false
+          User newUser = new User(userID, name, email, password, address, phoneNumber, isElite);
+
+          // Save to `users.txt`
+          writer.write(userID + "," + name + "," + email + "," + password + ",Phone:" + phoneNumber + ",Address:" + address + ",Elite:" + isElite);
+          writer.newLine();
+
+          // Create individual user file
+          newUser.saveToFile();
+
+          return newUser;
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+      return null;
+    }
 
     // Login Method
     public static User login(String email, String password) {

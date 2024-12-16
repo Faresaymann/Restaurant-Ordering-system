@@ -37,17 +37,17 @@ public class Profile extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        LoginBtn4 = new javax.swing.JButton();
+        UnSubToElite = new javax.swing.JButton();
         backMenuBtn = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        SubToElite = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1116, 706));
-        setPreferredSize(new java.awt.Dimension(1116, 706));
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -99,14 +99,14 @@ public class Profile extends javax.swing.JFrame {
             }
         });
 
-        LoginBtn4.setBackground(new java.awt.Color(51, 204, 0));
-        LoginBtn4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        LoginBtn4.setForeground(new java.awt.Color(255, 255, 255));
-        LoginBtn4.setText("Subcribe to Elite");
-        LoginBtn4.setBorder(new javax.swing.border.MatteBorder(null));
-        LoginBtn4.addActionListener(new java.awt.event.ActionListener() {
+        UnSubToElite.setBackground(new java.awt.Color(51, 204, 0));
+        UnSubToElite.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        UnSubToElite.setForeground(new java.awt.Color(255, 255, 255));
+        UnSubToElite.setText("UnSubcribe to Elite");
+        UnSubToElite.setBorder(new javax.swing.border.MatteBorder(null));
+        UnSubToElite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginBtn4ActionPerformed(evt);
+                UnSubToEliteActionPerformed(evt);
             }
         });
 
@@ -206,6 +206,17 @@ public class Profile extends javax.swing.JFrame {
             }
         });
 
+        SubToElite.setBackground(new java.awt.Color(51, 204, 0));
+        SubToElite.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        SubToElite.setForeground(new java.awt.Color(255, 255, 255));
+        SubToElite.setText("Subcribe to Elite");
+        SubToElite.setBorder(new javax.swing.border.MatteBorder(null));
+        SubToElite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubToEliteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -221,27 +232,26 @@ public class Profile extends javax.swing.JFrame {
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(107, 107, 107)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                         .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                         .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                        .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(UnSubToElite, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(SubToElite, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(423, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(backMenuBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 346, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(482, 482, 482))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LoginBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(427, 427, 427))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,9 +292,11 @@ public class Profile extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(72, 72, 72)
-                .addComponent(LoginBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+                .addGap(45, 45, 45)
+                .addComponent(SubToElite, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(UnSubToElite, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -311,36 +323,35 @@ public class Profile extends javax.swing.JFrame {
         jLabel10.setText(name); 
     }//GEN-LAST:event_jLabel10AncestorAdded
 
-    private void LoginBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtn4ActionPerformed
-        // TODO add your handling code here:
+    private void UnSubToEliteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UnSubToEliteActionPerformed
+
         if (RestaurantApp.currentUser.isElite()) {
-            JOptionPane.showMessageDialog(this, "You are already subscribed to this service", "Info", JOptionPane.ERROR_MESSAGE);
-        }
-        else {
             // Ask the user to confirm the subscription
             int response = JOptionPane.showConfirmDialog(
                 this,
-                "The subscription costs $100.\nIt offers a 10% discount on any invoice.\nDo you want to proceed?",
-                "Elite Service Subscription",
+                "Are you sure you want to unsubscribe from the Elite Service?",
+                "Elite Service Unubscription",
                 JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.INFORMATION_MESSAGE
             );
-
             if (response == JOptionPane.OK_OPTION) {
                 // Update the user's elite status
-                RestaurantApp.currentUser.setElite(true);
+                RestaurantApp.currentUser.setElite(false);
 
-                JOptionPane.showMessageDialog(this, "You have successfully subscribed to the service!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "You have successfully unsubscribed from the service!", "Success", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Subscription canceled.", "Info", JOptionPane.WARNING_MESSAGE);
-            }
+                JOptionPane.showMessageDialog(this, "Subscription is valid", "Info", JOptionPane.WARNING_MESSAGE);
+            }   
         }
-
+        else {
+            JOptionPane.showMessageDialog(this, "You have already unsubscribed from this service.", "Info", JOptionPane.ERROR_MESSAGE);
+            
+        }
         //update the elite membershib label
         isElite=RestaurantApp.currentUser.isElite();
         jLabel15.setText(Boolean.toString(isElite));
-
-    }//GEN-LAST:event_LoginBtn4ActionPerformed
+        RestaurantApp.currentUser.saveToFile();//save the new update to the user file
+    }//GEN-LAST:event_UnSubToEliteActionPerformed
 
     private void backMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backMenuBtnActionPerformed
         // TODO add your handling code here:
@@ -380,10 +391,41 @@ public class Profile extends javax.swing.JFrame {
          jLabel19.setText(String.valueOf(userID));
     }//GEN-LAST:event_jLabel19AncestorAdded
 
+    private void SubToEliteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubToEliteActionPerformed
+  
+        if (RestaurantApp.currentUser.isElite()) {
+            JOptionPane.showMessageDialog(this, "You are already subscribed to this service", "Info", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            // Ask the user to confirm the subscription
+            int response = JOptionPane.showConfirmDialog(
+                this,
+                "The subscription costs $100.\nIt offers a 10% discount on any invoice.\nDo you want to proceed?",
+                "Elite Service Subscription",
+                JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.INFORMATION_MESSAGE
+            );
+
+            if (response == JOptionPane.OK_OPTION) {
+                // Update the user's elite status
+                RestaurantApp.currentUser.setElite(true);
+
+                JOptionPane.showMessageDialog(this, "You have successfully subscribed to the service!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Subscription canceled.", "Info", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+        //update the elite membershib label
+        isElite=RestaurantApp.currentUser.isElite();
+        jLabel15.setText(Boolean.toString(isElite));
+        RestaurantApp.currentUser.saveToFile();//save the new update to the user file
+    }//GEN-LAST:event_SubToEliteActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton LoginBtn4;
+    private javax.swing.JButton SubToElite;
+    private javax.swing.JButton UnSubToElite;
     private javax.swing.JButton backMenuBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

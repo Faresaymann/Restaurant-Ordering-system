@@ -326,7 +326,7 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_FullNameTFActionPerformed
 
     private void SignUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpBtnActionPerformed
-            // Get user details from the text fields
+           // Get user details from the text fields
            String fullName = FullNameTF.getText().trim();
            String email = SignUPEmail.getText().trim();
            String password = SignUpPassword.getText().trim();
@@ -345,15 +345,24 @@ public class SignUp extends javax.swing.JFrame {
            }
 
            if (password.isEmpty()) {
-               JOptionPane.showMessageDialog(this, "Password cannot be empty.");
-               return;
-           }
+                JOptionPane.showMessageDialog(this, "Password cannot be empty.");
+                return;
+            }
+
+            if (password.length() < 8) {
+                JOptionPane.showMessageDialog(this, "Password must be at least 8 characters long.");
+                return;
+            }
 
            if (!phoneNumber.matches("^\\d{11}$")) {
-               JOptionPane.showMessageDialog(this, "Phone number must contain 11 digits.");
-               return;
+                JOptionPane.showMessageDialog(this, "Phone number must contain exactly 11 digits.");
+                return;
            }
 
+           if (!phoneNumber.matches("^(010|011|012|015).*")) {
+                JOptionPane.showMessageDialog(this, "Phone number must start with 010, 011, 012, or 015.");
+                return;
+            }
            if (address.isEmpty()) {
                JOptionPane.showMessageDialog(this, "Address cannot be empty.");
                return;
@@ -391,32 +400,6 @@ public class SignUp extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
 
-   
-    
-    
-    public static void main(String args[]) {
-      
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-       
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
