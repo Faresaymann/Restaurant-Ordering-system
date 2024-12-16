@@ -7,7 +7,7 @@ This repository contains a Java GUI-based restaurant ordering system. The system
 To get started, clone this repository:
 
 ``` bash
-git clone https://github.com/yourusername/restaurant-ordering-system.git    
+git clone https://github.com/Faresaymann/Restaurant-Ordering-system.git
 cd restaurant-ordering-system
 ```
 Ensure you have Java Development Kit (JDK) installed.
