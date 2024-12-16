@@ -1,8 +1,0 @@
-UserID:4
-Name:fares
-Email:faresO@gmail.com
-Password:123
-PhoneNumber:01934772234
-DeliveryAddress:giza
-EliteStatus:false
-Orders:

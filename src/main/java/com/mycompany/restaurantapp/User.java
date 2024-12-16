@@ -63,7 +63,7 @@ public class User {
           User newUser = new User(userID, name, email, password, address, phoneNumber, isElite);
 
           // Save to `users.txt`
-          writer.write(userID + "," + name + "," + email + "," + password + ",Phone:" + phoneNumber + ",Address:" + address + ",Elite:" + isElite);
+          writer.write(userID + "," + name + "," + email + "," + password + ",Phone:" + phoneNumber + ",Address:" + address);
           writer.newLine();
 
           // Create individual user file
@@ -76,23 +76,28 @@ public class User {
       return null;
     }
 
-    // Login Method
+
+     // Login Method
     public static User login(String email, String password) {
-           try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
-               String line;
-               while ((line = reader.readLine()) != null) {
-                   String[] userDetails = line.split(",");
-                   if (userDetails[2].equals(email) && userDetails[3].equals(password)) {
-                       int userID = Integer.parseInt(userDetails[0]);
-                       return loadFromFile(userID); // Load user data from file
-                       
-                   }
-               }
-           } catch (IOException e) {
-               e.printStackTrace();
-           }
-           return null; // Login failed
-       }
+        try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
+             String line;
+             while ((line = reader.readLine()) != null) {
+                 String[] userDetails = line.split(",");
+                 if (userDetails[2].equals(email) && userDetails[3].equals(password)) {
+                     int userID = Integer.parseInt(userDetails[0]);
+                     return loadFromFile(userID); // Load user data from file
+                 }
+             }
+             // If no match found, print a user-friendly message
+             System.out.println("Incorrect email or password. Please try again.");
+        } catch (IOException e) {
+             System.out.println("An error occurred while reading the file. Please contact support.");
+             // Optionally log the error instead of printing it to the terminal
+             // e.g., Logger.log(Level.SEVERE, "File reading error", e);
+        }
+        return null; // Login failed
+     }
+
 
     // Save User Data to Individual File
     public void saveToFile() {

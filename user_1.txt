@@ -1,9 +1,9 @@
 UserID:1
-Name:fares
-Email:fares@gmail.com
-Password:123
-PhoneNumber:01023662234
-DeliveryAddress:giza
+Name:Fares Ayman
+Email:faresEmail@gmail.com
+Password:12345678
+PhoneNumber:01501501501
+DeliveryAddress:415 Shingleton
 EliteStatus:true
 Orders:
 Item{itemID=8, name=Beef Burger, price=90.0, description=null}

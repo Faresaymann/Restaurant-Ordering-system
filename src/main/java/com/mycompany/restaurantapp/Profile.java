@@ -43,8 +43,8 @@ public class Profile extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
         SubToElite = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1116, 706));
@@ -189,23 +189,6 @@ public class Profile extends javax.swing.JFrame {
             }
         });
 
-        jLabel19.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setText("UserID");
-        jLabel19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel19.setOpaque(true);
-        jLabel19.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jLabel19AncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-
         SubToElite.setBackground(new java.awt.Color(51, 204, 0));
         SubToElite.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         SubToElite.setForeground(new java.awt.Color(255, 255, 255));
@@ -214,6 +197,23 @@ public class Profile extends javax.swing.JFrame {
         SubToElite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SubToEliteActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("UserID");
+        jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel11.setOpaque(true);
+        jLabel11.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jLabel11AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
 
@@ -237,10 +237,10 @@ public class Profile extends javax.swing.JFrame {
                         .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                         .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                         .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                        .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
+                        .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(171, 171, 171)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(UnSubToElite, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)
@@ -268,7 +268,7 @@ public class Profile extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel8))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -319,8 +319,7 @@ public class Profile extends javax.swing.JFrame {
 
     private void jLabel10AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel10AncestorAdded
         // TODO add your handling code here:
-        name=RestaurantApp.currentUser.getName();
-        jLabel10.setText(name); 
+      
     }//GEN-LAST:event_jLabel10AncestorAdded
 
     private void UnSubToEliteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UnSubToEliteActionPerformed
@@ -364,32 +363,44 @@ public class Profile extends javax.swing.JFrame {
 
     private void jLabel15AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel15AncestorAdded
         // TODO add your handling code here:
-        isElite=RestaurantApp.currentUser.isElite();
-        jLabel15.setText(Boolean.toString(isElite));
     }//GEN-LAST:event_jLabel15AncestorAdded
 
     private void jLabel16AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel16AncestorAdded
-        email=RestaurantApp.currentUser.getEmail();
-         jLabel16.setText(email);        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jLabel16AncestorAdded
 
     private void jLabel17AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel17AncestorAdded
         // TODO add your handling code here:
-         newAddress=RestaurantApp.currentUser.getDeliveryAddress();
-         jLabel17.setText(newAddress);
+       
     }//GEN-LAST:event_jLabel17AncestorAdded
 
     private void jLabel18AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel18AncestorAdded
-        // TODO add your handling code here:
-         phoneNumber=RestaurantApp.currentUser.getPhoneNumber();
-         jLabel18.setText(phoneNumber);
-    }//GEN-LAST:event_jLabel18AncestorAdded
+        // Get User Data
+        // Retrieve the current user's ID from the RestaurantApp and set it to jLabel11.
+        userID = RestaurantApp.currentUser.getUserID();
+        jLabel11.setText(String.valueOf(userID)); // Display user ID in the label.
 
-    private void jLabel19AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel19AncestorAdded
-        // TODO add your handling code here:     
-        userID=RestaurantApp.currentUser.getUserID();
-         jLabel19.setText(String.valueOf(userID));
-    }//GEN-LAST:event_jLabel19AncestorAdded
+        // Retrieve the current user's name and set it to jLabel10.
+        name = RestaurantApp.currentUser.getName();
+        jLabel10.setText(name); // Display user's name in the label.
+
+        // Retrieve the current user's email and set it to jLabel16.
+        email = RestaurantApp.currentUser.getEmail();
+        jLabel16.setText(email); // Display user's email in the label.
+
+        // Retrieve the current user's delivery address and set it to jLabel17.
+        newAddress = RestaurantApp.currentUser.getDeliveryAddress();
+        jLabel17.setText(newAddress); // Display delivery address in the label.
+
+        // Retrieve the current user's phone number and set it to jLabel18.
+        phoneNumber = RestaurantApp.currentUser.getPhoneNumber();
+        jLabel18.setText(phoneNumber); // Display phone number in the label.
+
+        // Retrieve the elite status of the current user and set it to jLabel15.
+        isElite = RestaurantApp.currentUser.isElite();
+        jLabel15.setText(Boolean.toString(isElite)); // Display elite status (true/false) in the label.
+
+    }//GEN-LAST:event_jLabel18AncestorAdded
 
     private void SubToEliteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubToEliteActionPerformed
   
@@ -421,6 +432,10 @@ public class Profile extends javax.swing.JFrame {
         RestaurantApp.currentUser.saveToFile();//save the new update to the user file
     }//GEN-LAST:event_SubToEliteActionPerformed
 
+    private void jLabel11AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel11AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel11AncestorAdded
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -429,11 +444,11 @@ public class Profile extends javax.swing.JFrame {
     private javax.swing.JButton backMenuBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
