@@ -1,18 +1,18 @@
-##Restaurant Ordering System with Java GUI
+## Restaurant Ordering System with Java GUI
 
 This repository contains a Java GUI-based restaurant ordering system. The system allows users to sign up, log in, and place orders from a restaurant menu. It uses text files to store user and menu data persistently. The project includes features like Elite Membership with a 10% discount for premium users.
 
-##Installation
+## Installation
 
 To get started, clone this repository:
 
-```bash
+``` bash
 git clone https://github.com/yourusername/restaurant-ordering-system.git    
 cd restaurant-ordering-system
 ```
 Ensure you have Java Development Kit (JDK) installed.
 
-##Features
+## Features
 
 User Authentication
 
@@ -27,12 +27,12 @@ Users can add items to their order and generate a bill.
 Elite Membership
 
 Elite members receive a 10% discount on their total bill.
-##How to Run
+## How to Run
 
 Compile the Code:
 Use the following commands to compile and run the program:
 
-```bash
+``` bash
 javac RestaurantApp.java  
 java RestaurantApp
 ```
@@ -44,7 +44,7 @@ Place an Order:
 
 Browse the menu and select items.
 Finalize your order and view the total bill.
-##File Structure
+## File Structure
 
 RestaurantApp.java - Main application file.
 users.txt - Stores user data in the following format:
@@ -57,7 +57,7 @@ makefile
 ItemID,ItemName,Price  
 Example: 1,Burger,5.99  
          2,Pizza,8.49  
-##Example Output
+## Example Output
 
 When the application runs, users will see the following:
 
@@ -80,6 +80,6 @@ Final Amount: $45.00
 Add a database (e.g., MySQL) for persistent data storage.
 Implement an admin panel for managing the menu and orders.
 Improve the GUI with enhanced visuals and themes.
-##License
+## License
 
 This project is open-source and available .
