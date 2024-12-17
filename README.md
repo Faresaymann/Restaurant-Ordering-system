@@ -77,7 +77,7 @@ yaml
 Total Bill: $50.00  
 Elite Discount Applied: 10%  
 Final Amount: $45.00  
-##Future Improvements
+## Future Improvements
 
 Add a database (e.g., MySQL) for persistent data storage.
 Implement an admin panel for managing the menu and orders.
